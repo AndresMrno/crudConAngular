@@ -1,0 +1,37 @@
+
+<div class="container">
+    <h2>Crud Usuarios</h2>
+    <button class="btn btn-primary mb-3"[routerLink]="['formulario']">Crear Usuario</button>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Numero identidad</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Fecha Nacimiento</th>
+        <th scope="col">Ciudad</th>
+        <th scope="col">Correo Electronico</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Ocupacion</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let usuario of usuarios">
+        <th scope="row"> {{usuario.numero_identidad}} </th>
+        <td> {{usuario.nombre}} </td>
+        <td> {{usuario.apellido}}</td>
+        <td> {{usuario.fecha_nacimiento}}</td>
+        <td> {{usuario.id_ciudad_fk.nombre_ciudad}}</td>
+        <td> {{usuario.correo_electronico}}</td>
+        <td> {{usuario.telefono}}</td>
+        <td> {{usuario.id_ocupacion_fk.nombre_ocupacion}}</td>
+        <td>
+            <button class="btn btn-info me-2"[routerLink]="['formulario', usuario.numero_identidad]" >Editar</button>
+            <button class="btn btn-danger" (click)="eliminarUsuario(usuario.numero_identidad)" >Eliminar</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
